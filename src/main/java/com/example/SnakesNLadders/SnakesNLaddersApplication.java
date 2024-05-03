@@ -10,4 +10,5 @@ public class SnakesNLaddersApplication {
 		SpringApplication.run(SnakesNLaddersApplication.class, args);
 	}
 
+
 }
