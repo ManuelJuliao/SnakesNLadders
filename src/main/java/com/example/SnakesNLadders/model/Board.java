@@ -140,11 +140,11 @@ public class Board {
         cells.put(95,"S75");
         cells.put(96,"S75");
 
-        cells.put(79,"S79");
-        cells.put(80,"S79");
-        cells.put(81,"S79");
-        cells.put(82,"S79");
-        cells.put(99,"S79");
+        cells.put(79,"S80");
+        cells.put(80,"S80");
+        cells.put(81,"S80");
+        cells.put(82,"S80");
+        cells.put(99,"S80");
 
     }
 
