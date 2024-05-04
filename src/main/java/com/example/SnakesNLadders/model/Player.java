@@ -7,18 +7,18 @@ public class Player {
 
     public Player(String playername){
         this.name = playername;
-        this.pos = 0;
+        this.pos = 1;
     }
 
-    String getName(){
+    public String getName(){
         return this.name;
     }
 
-    int getPos(){
+    public int getPos(){
         return pos;
     }
 
-    void setPos(int position){
+    public void setPos(int position){
         this.pos = position;
     }
 }

@@ -22,7 +22,7 @@ public class GameController {
     @PostMapping("/players")
     public ResponseEntity<String> addPlayers(@RequestBody List<String> playerNames) {
         for (String playerName : playerNames) {
-            gameService.addPlayer(new Player(playerName));
+            gameService.addPlayer(playerName);
         }
         return ResponseEntity.ok("Player added successfully");
     }

@@ -12,11 +12,14 @@ public class Board {
         for (int i = 1; i <= 100; i++) {
             cells.put(i, "-"); // Initialize each cell with an empty string
         }
-        addSnakes(cells);
-        addLadders();
     }
 
-    private void addLadders() {
+    public void initBoard(){
+        addSnakes(cells);
+        addLadders(cells);
+    }
+
+    private void addLadders(Map<Integer,String> cells) {
         cells.put(2,"L38");
         cells.put(18,"L38");
         cells.put(19,"L38");
@@ -34,7 +37,6 @@ public class Board {
         cells.put(9,"L31");
         cells.put(12,"L31");
         cells.put(13,"L31");
-        cells.put(29,"L31");
         cells.put(30,"L31");
         cells.put(31,"L31");
         cells.put(32,"L31");
@@ -58,7 +60,6 @@ public class Board {
         cells.put(55,"L84");
         cells.put(65,"L84");
         cells.put(66,"L84");
-        cells.put(76,"L84");
         cells.put(77,"L84");
         cells.put(84,"L84");
 
@@ -85,7 +86,6 @@ public class Board {
         cells.put(17,"S6");
 
         cells.put(11,"S11");
-        cells.put(12,"S11");
         cells.put(29,"S11");
         cells.put(32,"S11");
         cells.put(33,"S11");
@@ -95,23 +95,18 @@ public class Board {
         cells.put(24,"S25");
         cells.put(25,"S25");
         cells.put(35,"S25");
-        cells.put(36,"S25");
         cells.put(37,"S25");
         cells.put(46,"S25");
 
-        cells.put(19,"S19");
-        cells.put(21,"S19");
         cells.put(22,"S19");
         cells.put(38,"S19");
         cells.put(39,"S19");
-        cells.put(40,"S19");
         cells.put(42,"S19");
         cells.put(43,"S19");
         cells.put(59,"S19");
         cells.put(62,"S19");
 
         cells.put(58,"S60");
-        cells.put(59,"S60");
         cells.put(60,"S60");
         cells.put(63,"S60");
         cells.put(64,"S60");
@@ -133,8 +128,6 @@ public class Board {
         cells.put(92,"S88");
         cells.put(93,"S88");
 
-        cells.put(75,"S75");
-        cells.put(76,"S75");
         cells.put(85,"S75");
         cells.put(86,"S75");
         cells.put(95,"S75");
@@ -147,6 +140,8 @@ public class Board {
         cells.put(99,"S80");
 
     }
+
+
 
     public String getCell(int cellNr) {
         return cells.getOrDefault(cellNr, "-");
