@@ -74,7 +74,16 @@ public class GameService {
             doubleFlag = true;
         }
         totalDice = rolls[0]+rolls[1];
-        newPos = currentPos+totalDice;
+        //newPos = currentPos+totalDice;
+
+        if( currentPos+totalDice > 100){
+            int diff = (currentPos+totalDice) - 100;
+            newPos = 100 - diff;
+        }
+        else{
+            newPos = currentPos+totalDice;
+        }
+
         currentPlayer.setPos(newPos);
         currentPlayer.setPos(checkForSnakesOrLadders(currentPlayer,board));
 
@@ -85,7 +94,7 @@ public class GameService {
 
         Player newPlayer = players.get(currentPlayerIndex);
 
-        return new Move(newPlayer,newPos,totalDice);
+        return new Move(newPlayer,newPos,totalDice,victory);
     }
 
     private void checkVictory(Player player) {

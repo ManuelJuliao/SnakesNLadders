@@ -26,7 +26,7 @@ public class GameController {
 
     }
 
-    @PostMapping("/players")
+    @PostMapping("/player")
     public ResponseEntity<String> addPlayers(@RequestBody String playerName) {
         gameService.addPlayer(playerName);
         return ResponseEntity.ok("Player added successfully");
