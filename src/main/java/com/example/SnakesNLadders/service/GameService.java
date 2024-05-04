@@ -1,6 +1,7 @@
 package com.example.SnakesNLadders.service;
 
 import com.example.SnakesNLadders.model.Board;
+import com.example.SnakesNLadders.model.Move;
 import com.example.SnakesNLadders.model.Player;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,7 @@ public class GameService {
     public void addPlayer(String playerName) {
         Player player = new Player(playerName);
         players.add(player);
+        System.out.println(players);
     }
     public void startGame() {
         board.initBoard();
@@ -59,9 +61,11 @@ public class GameService {
         }
     }
 
-    void movePlayer(Player player){
-        int currentPos = player.getPos();
+    public Move movePlayer(){
+        Player currentPlayer = players.get(currentPlayerIndex);
+        int currentPos = currentPlayer.getPos();
         int newPos;
+        int totalDice;
         if(doubleFlag)
             doubleFlag = false;
 
@@ -69,14 +73,19 @@ public class GameService {
         if (rolls[0]==rolls[1]){
             doubleFlag = true;
         }
-        newPos = currentPos+rolls[0]+rolls[1];
-        player.setPos(newPos);
-        player.setPos(checkForSnakesOrLadders(player,board));
+        totalDice = rolls[0]+rolls[1];
+        newPos = currentPos+totalDice;
+        currentPlayer.setPos(newPos);
+        currentPlayer.setPos(checkForSnakesOrLadders(currentPlayer,board));
 
 
-        checkVictory(player);
-        nextPlayer();
+        checkVictory(currentPlayer);
+        if(!doubleFlag)
+            nextPlayer();
 
+        Player newPlayer = players.get(currentPlayerIndex);
+
+        return new Move(newPlayer,newPos,totalDice);
     }
 
     private void checkVictory(Player player) {
