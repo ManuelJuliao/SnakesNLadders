@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/game")
 public class GameController {
@@ -31,6 +33,15 @@ public class GameController {
         gameService.addPlayer(playerName);
         return ResponseEntity.ok("Player added successfully");
     }
+
+    @PostMapping("/players")
+    public ResponseEntity<String> addPlayers(@RequestBody List<String> playerNames) {
+        gameService.addPlayers(playerNames);
+        return ResponseEntity.ok("Players added successfully");
+    }
+
+
+
 
     @PostMapping("/start-game")
     public ResponseEntity<?> startGame() {

@@ -1,0 +1,68 @@
+.add-player-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align all contents */
+  }
+  
+  .add-player-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-left: auto; /* Center the title */
+    margin-right: auto; /* Center the title */
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .player-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    max-width: 200px; /* Limit the input field's width */
+  }
+  
+  .add-player-button,
+  .back-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .current-players-container {
+    margin-top: 20px;
+    margin-left: auto; /* Center the current players container */
+    margin-right: auto; /* Center the current players container */
+  }
+  
+  .current-players-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .players-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .player-item {
+    margin-bottom: 5px;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

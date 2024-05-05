@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  cursor: pointer; /* Add cursor pointer to indicate interactivity */
+  transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+
+/* Hover effect */
+.button:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+a {
+  text-decoration: none; /* Remove underline from all anchor elements */
+}
+
+

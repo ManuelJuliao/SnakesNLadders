@@ -45,6 +45,14 @@ public class GameService {
         players.add(player);
         System.out.println(players);
     }
+
+    public void addPlayers(List<String> playerNames) {
+        for (String playerName : playerNames) {
+            Player player = new Player(playerName);
+            players.add(player);
+        }
+        System.out.println(players);
+    }
     public void startGame() {
         board.initBoard();
 
