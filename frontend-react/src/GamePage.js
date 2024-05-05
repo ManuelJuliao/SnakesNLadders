@@ -64,7 +64,7 @@ const generateGridData = () => {
   };
 
   const rollDice = () => {
-    // Implement dice rolling logic here
+    
   };
 
   return (
