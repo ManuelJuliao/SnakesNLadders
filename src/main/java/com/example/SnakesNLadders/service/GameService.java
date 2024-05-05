@@ -5,10 +5,7 @@ import com.example.SnakesNLadders.model.Move;
 import com.example.SnakesNLadders.model.Player;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class GameService {
@@ -55,8 +52,17 @@ public class GameService {
     }
     public void startGame() {
         board.initBoard();
-
+        System.out.println("Board init");
     }
+
+    public Map<String, Integer> getPlayerNamesAndPositions() {
+        Map<String, Integer> playerNamesAndPositions = new HashMap<>();
+        for (Player player : players) {
+            playerNamesAndPositions.put(player.getName(), player.getPos());
+        }
+        return playerNamesAndPositions;
+    }
+
 
     public void printBoard() {
         for (int i = 1; i <= 100; i++) {
@@ -127,4 +133,6 @@ public class GameService {
         int[] rolls = { rand.nextInt(6) + 1, rand.nextInt(6) + 1 }; // Roll two dice
         return rolls;
     }
+
+
 }

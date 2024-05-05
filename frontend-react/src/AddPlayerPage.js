@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddPlayerPage.css'; // Import CSS file for styling
 import { Link } from 'react-router-dom'; // Import Link component
+import axios from 'axios'; 
 
 function AddPlayerPage() {
   const [players, setPlayers] = useState([]);
@@ -27,6 +28,17 @@ const handleAddPlayer = () => {
   }
 };
 
+const handleSubmit = () => {
+    // Make HTTP POST request to backend with list of players
+    axios.post('http://localhost:8080/api/game/players', players)
+      .then(response => {
+        console.log(response.data); // Handle success response
+      })
+      .catch(error => {
+        console.error('Error submitting players:', error); // Handle error
+      });
+  };
+
 return (
     <div className="add-player-container">
     <h2>Add Player</h2>
@@ -38,7 +50,7 @@ return (
         placeholder="Enter player name" 
         className="player-input" />
         <button onClick={handleAddPlayer} className="add-player-button">Add Player</button>
-        <button type="submit" className="add-player-button">Submit</button>
+        <button onClick={handleSubmit} type="submit" className="add-player-button">Submit</button>
     </div>
     {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Render error message */}
     <div>

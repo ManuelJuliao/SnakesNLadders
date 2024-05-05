@@ -3,8 +3,23 @@ import logo from './snl-logo.png';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AddPlayerPage from './AddPlayerPage';
+import GamePage from './GamePage';
+import axios from 'axios'; 
+
 
 function App() {
+
+  const startGame = () => {
+    // Make HTTP POST request to start the game
+    axios.post('http://localhost:8080/api/game/start-game')
+      .then(response => {
+        console.log(response.data); // Handle success response
+        window.location.href = '/game'; // Redirect to the game page
+      })
+      .catch(error => {
+        console.error('Error starting the game:', error); // Handle error
+      });
+    }
   
   return (
     <div className="App">
@@ -31,6 +46,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/add-player" element={<AddPlayerPage />} />
+        <Route path="/game" element={<GamePage />} />
       </Routes>
     </Router>
   );

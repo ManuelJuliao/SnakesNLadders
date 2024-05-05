@@ -1,15 +1,14 @@
 package com.example.SnakesNLadders.controller;
 
 import com.example.SnakesNLadders.model.Move;
+import com.example.SnakesNLadders.model.Player;
 import com.example.SnakesNLadders.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/game")
@@ -29,7 +28,7 @@ public class GameController {
     }
 
     @PostMapping("/player")
-    public ResponseEntity<String> addPlayers(@RequestBody String playerName) {
+    public ResponseEntity<String> addPlayer(@RequestBody String playerName) {
         gameService.addPlayer(playerName);
         return ResponseEntity.ok("Player added successfully");
     }
@@ -53,5 +52,11 @@ public class GameController {
     public ResponseEntity<?> movePlayer() {
         setMove(gameService.movePlayer());
         return ResponseEntity.ok(move);
+    }
+
+    @GetMapping("get-players")
+    public ResponseEntity<Map<String,Integer>> getPlayers() {
+        Map<String,Integer> players = gameService.getPlayerNamesAndPositions();
+        return ResponseEntity.ok(players);
     }
 }
