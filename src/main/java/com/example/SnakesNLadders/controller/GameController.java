@@ -59,4 +59,10 @@ public class GameController { //class responsible for the
         Map<String,Integer> players = gameService.getPlayerNamesAndPositions();
         return ResponseEntity.ok(players);
     }
+
+    @PostMapping("reset-game")
+    public ResponseEntity<?> resetGame(){
+        gameService.resetGame();
+        return ResponseEntity.ok().build();
+    }
 }

@@ -19,7 +19,7 @@ const handleAddPlayer = () => {
     if (players.length < 4) {
       setPlayers([...players, newPlayerName]);
       setNewPlayerName('');
-      setErrorMessage(''); // Clear error message if player added successfully
+      setErrorMessage(''); 
     } else {
       setErrorMessage('Maximum number of players (4) reached.');
     }
@@ -29,13 +29,12 @@ const handleAddPlayer = () => {
 };
 
 const handleSubmit = () => {
-    // Make HTTP POST request to backend with list of players
     axios.post('http://localhost:8080/api/game/players', players)
       .then(response => {
-        console.log(response.data); // Handle success response
+        console.log(response.data); 
       })
       .catch(error => {
-        console.error('Error submitting players:', error); // Handle error
+        console.error('Error submitting players:', error); 
       });
   };
 
@@ -52,7 +51,7 @@ return (
         <button onClick={handleAddPlayer} className="add-player-button">Add Player</button>
         <button onClick={handleSubmit} type="submit" className="add-player-button">Submit</button>
     </div>
-    {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Render error message */}
+    {errorMessage && <p className="error-message">{errorMessage}</p>}
     <div>
         <h3>Current Players:</h3>
         <ul>
@@ -61,7 +60,7 @@ return (
         ))}
         </ul>
     </div>
-    <Link to="/" className="back-button">Back</Link> {/* Add Link for back button */}
+    <Link to="/" className="back-button">Back</Link> 
     </div>
 );
 

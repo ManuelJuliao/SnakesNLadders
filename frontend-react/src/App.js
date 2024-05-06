@@ -20,6 +20,10 @@ function App() {
         console.error('Error starting the game:', error); // Handle error
       });
     }
+
+    const addPlayer = () => {
+        window.location.href = '/add-player'
+    }
   
   return (
     <div className="App">
@@ -27,8 +31,9 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <div>
             
-            <button className="button start-button" onClick={startGame}>Start Game</button>
-            <Link to="/add-player" className="button add-player-page-button">Add Player</Link>
+            <button className="button start-button" onClick={startGame}>Game</button>
+            <button className="button add-player" onClick={addPlayer}>Add Player</button>
+            {/* <Link to="/add-player" className="button add-player-page-button">Add Player</Link> */}
           </div>
           
         </header>

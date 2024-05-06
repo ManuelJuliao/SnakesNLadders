@@ -56,9 +56,10 @@ public class GameService {
     }
 
     public Map<String, Integer> getPlayerNamesAndPositions() {
-        Map<String, Integer> playerNamesAndPositions = new HashMap<>();
+        Map<String, Integer> playerNamesAndPositions = new LinkedHashMap<>();
         for (Player player : players) {
             playerNamesAndPositions.put(player.getName(), player.getPos());
+            System.out.println(player.getName());
         }
         return playerNamesAndPositions;
     }
@@ -109,7 +110,7 @@ public class GameService {
         Player newPlayer = players.get(currentPlayerIndex);
 
         Move move = new Move(newPlayer,newPos,totalDice,victory);
-        System.out.println(move);
+        //System.out.println(move);
 
         return move;
     }
@@ -138,4 +139,10 @@ public class GameService {
     }
 
 
+    public void resetGame() {
+        currentPlayerIndex = 0;
+        for (Player player : players) {
+            player.setPos(1);
+        }
+    }
 }

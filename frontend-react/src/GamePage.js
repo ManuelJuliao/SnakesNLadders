@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import background from './background.png';
 import './GamePage.css';
 import axios from 'axios'; 
+import { Link } from 'react-router-dom';
+
 
 
 function GamePage() {
@@ -68,6 +70,19 @@ function getPlayerInfo(){
     return null;
   };
 
+  const resetGame = () => {
+    axios.post('http://localhost:8080/api/game/reset-game')
+      .then(response => {
+        console.log('Game Reset');
+      })
+      .catch(error => {
+        console.error('Failed to reset', error);
+      })
+    setDiceValue(0);
+    setCurrentPlayer(players[0].name);
+    getPlayerInfo();
+  };
+
   const rollDice = () => {
     axios.post('http://localhost:8080/api/game/move')
     .then(response => {
@@ -96,9 +111,11 @@ function getPlayerInfo(){
 
   return (
     <div className="game-page">
-      <div className="title-container">
-        <h2>Snakes 'n Ladders</h2>
-      </div>
+       <Link to="/"> 
+        <div className="title-container">
+          <h2>Snakes 'n Ladders</h2>
+        </div>
+      </Link>
       <div className="container-wrapper">
         <div className="board-container">
           <div className="board">
@@ -114,6 +131,7 @@ function getPlayerInfo(){
         </div>
         <div className="empty-container">
             <button onClick={rollDice}>Roll Dice</button>
+            <button onClick={resetGame}>Reset Game</button>
             <div className="dice-value">Dice: {diceValue}</div>
             <div>Current Player: {currentPlayer}</div>
             <ul className="player-list">

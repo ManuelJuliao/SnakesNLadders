@@ -35,7 +35,6 @@ public class Board {
         cells.put(26,"L26");
 
         cells.put(8,"L31");
-        cells.put(9,"L31");
         cells.put(12,"L31");
         cells.put(13,"L31");
         cells.put(30,"L31");
