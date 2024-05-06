@@ -7,6 +7,7 @@ public class Board {
     private Map<Integer, String> cells;
 
     public Board() {
+        // board map, each cell has a number and a string, string has a letter for snake or ladder and the cell the player should end up in
         cells = new HashMap<>();
         //init empty board
         for (int i = 1; i <= 100; i++) {

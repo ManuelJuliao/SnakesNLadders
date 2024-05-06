@@ -1,5 +1,6 @@
 package com.example.SnakesNLadders.model;
 
+// class returned to the frontend when the player rolls the dice, has the next player, new position of current player, dice result and a boolean for victory
 public class Move {
     private Player player;
     private int newPosition;

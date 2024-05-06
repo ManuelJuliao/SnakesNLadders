@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/game")
-public class GameController {
+public class GameController { //class responsible for the
     @Autowired
     private final GameService gameService;
     private Move move;

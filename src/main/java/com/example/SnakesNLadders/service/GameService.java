@@ -108,7 +108,10 @@ public class GameService {
 
         Player newPlayer = players.get(currentPlayerIndex);
 
-        return new Move(newPlayer,newPos,totalDice,victory);
+        Move move = new Move(newPlayer,newPos,totalDice,victory);
+        System.out.println(move);
+
+        return move;
     }
 
     private void checkVictory(Player player) {

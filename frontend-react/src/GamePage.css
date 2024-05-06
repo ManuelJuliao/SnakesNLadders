@@ -169,13 +169,9 @@
   }
 
 
-.player-number {
+.player-name{
     font-size: 18px;
     font-weight: bold; 
-}
-
-.player-name{
-    font-size: 16px;
     margin-top: 5px; 
 }
 

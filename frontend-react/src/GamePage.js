@@ -9,6 +9,8 @@ function GamePage() {
   const [gridData, setGridData] = useState([]);
   const [players, setPlayers] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState('');
+  const [firstTime, setFirstTime] = useState(true);
+  const [diceValue, setDiceValue] = useState(0); 
 
 const generateGridData = () => {
     const data = [];
@@ -28,11 +30,8 @@ const generateGridData = () => {
     return data;
   };
   
-  
-
-  
-  useEffect(() => {
-    axios.get('http://localhost:8080/api/game/get-players')
+function getPlayerInfo(){
+  axios.get('http://localhost:8080/api/game/get-players')
     .then(response => {
         
         const playersData = response.data;
@@ -45,13 +44,19 @@ const generateGridData = () => {
 
         setPlayers(playersArray);
 
-        if (playersArray.length > 0) {
+        if (playersArray.length > 0 && firstTime) {
             setCurrentPlayer(playersArray[0].name);
+            setFirstTime(false);
         }
     })
     .catch(error => {
         console.error('Failed to fetch player data:', error);
     });
+}
+
+  
+  useEffect(() => {
+    getPlayerInfo();
     setGridData(generateGridData());
 }, []);
 
@@ -64,6 +69,28 @@ const generateGridData = () => {
   };
 
   const rollDice = () => {
+    axios.post('http://localhost:8080/api/game/move')
+    .then(response => {
+      
+      console.log('Dice rolled successfully:', response.data);
+      const nextPlayer = response.data.player.name;
+      console.log('next player: ', response.data.player.name);
+      setDiceValue(response.data.dice);   
+      if(response.data.victory){
+        victory(currentPlayer);
+        window.location.href = '/';
+      }   
+      setCurrentPlayer(nextPlayer);
+      getPlayerInfo();
+    })
+    .catch(error => {
+      
+      console.error('Failed to roll dice:', error);
+    });
+
+    const victory = (playerName) => {
+      window.alert(`Congratulations ${playerName}! You won the game!`);
+    };
     
   };
 
@@ -87,15 +114,16 @@ const generateGridData = () => {
         </div>
         <div className="empty-container">
             <button onClick={rollDice}>Roll Dice</button>
+            <div className="dice-value">Dice: {diceValue}</div>
             <div>Current Player: {currentPlayer}</div>
             <ul className="player-list">
             {players.map((player, index) => (
             <li key={index} className="player-item">
-            <div className="player-number">Player {index + 1}</div>
+            <div className="player-name">{player.name}</div>
             <div className="player-info">
-                <div className="player-name">{player.name}</div>
                 <div className="player-position">Position: {player.position}</div>
             </div>
+
         </li>
     ))}
 </ul>
